@@ -1,0 +1,137 @@
+{% extends "./extends.html" %}
+{% block title %} Sistema de Ordenes {% endblock %}
+{% load static %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/estiloSistema.css' %}">
+</head>
+</ber>
+<body style="background-color: #ff6600">
+  <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+    <h1><a class="navbar-brand" href="#"><FONT COLOR="white" ><center>¡Ordena aquí!</center></FONT></a></h1>
+    <a href="base.html" class="btn btn-light ml-auto float-right" >Regresar</a>
+  </nav>
+  
+        <h2><center><FONT COLOR="white" size="45">Ordenes de Bowis</FONT></center></h2>  
+        <div class="card-group">
+            <div class="card">
+<body>
+                <div class="card-group">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><center>Sabores</center></h5>
+                        <p class="card-text">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radio" id="flexRadioDefault1" value="0" checked>
+                                <label class="form-check-label" for="radio"name="Mango">
+                                  Mango habanero
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radio" id="flexRadioDefault" value="0" checked>
+                                <label class="form-check-label" for="radio" name="Tamarindo">
+                                  Tamarindo
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radio" id="flexRadioDefault2" value="0" checked>
+                                <label class="form-check-label" for="radio" name="Queso">
+                                  Queso parmesano
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radio" id="flexRadioDefault3" value="0" checked>
+                                <label class="form-check-label" for="radio" name="BBQ">
+                                  BBQ
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radio" id="flexRadioDefault4" value="0" checken >
+                                <label class="form-check-label" for="radio" name="Crema">
+                                  Crema habanero
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radio" id="flexRadioDefault5" value="0" checked >
+                                <label class="form-check-label" for="radio" name="Pina">
+                                  Piña habanero
+                                </label>
+                              </div>
+                        </p>
+                        
+
+                <h5 class="card-title">Cantidad</h5>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="checkbox" id="producto1" value="130">
+                        <label class="form-check-label" for="producto1">Orden completa (10pz)</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="checkbox" id="producto2" value="65">
+                        <label class="form-check-label" for="producto2">Media orden (5pz)</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-warning" onclick="calcularPrecio()">Calcular Precio</button>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">$</span>
+                        </div>
+                        <input type="text" id="precioTotal" class="form-control" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calcularPrecio() {
+            var precioTotal = 0;
+            var productos = document.querySelectorAll('.form-check-input:checked');
+            productos.forEach(function(producto) {
+                precioTotal += parseFloat(producto.value);
+            });
+            document.getElementById('precioTotal').value = precioTotal.toFixed(2);
+        }
+    </script>
+<br>
+<nav class="navbar bg-body-tertiary"> 
+    <form class="container-fluid justify-content-start">
+    <button  class="btn btn-outline-warning me-2" type="button" onclick="generarURL()">Guardar orden</button></nav>
+    <script>
+      function generarURL() {
+          var url = "ordenCompleta.html?";
+          var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+          checkboxes.forEach(function(checkbox) {
+              if (checkbox.checked) {
+                  url += checkbox.id + "=true&";
+              }
+          });
+          var radios = document.querySelectorAll('input[type="radio"]');
+          radios.forEach(function(radio) {
+              if (radio.checked) {
+                  url += radio.id + "=true&";
+              }
+          });
+          // Elimina el último '&' si existe
+          if (url.endsWith("&")) {
+              url = url.slice(0, -1);
+          }
+          window.location.href = url;
+      }
+    </script>
+    
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+    </html>
+{% endblock %}

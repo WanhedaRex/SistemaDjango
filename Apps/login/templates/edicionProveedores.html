@@ -1,0 +1,30 @@
+{% extends "./proveedores.html" %}
+{% block title %}Proveedores{% endblock %}
+{% block body %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Edición de proveedores</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editarProveedores/" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtCodigo" name="txtCodigo" value="{{curso.codigo}}" class="form-control" placeholder="Código del proveedor "
+                        minlength="6" maxlength="6" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="nombre" name="nombre" value="{{curso.nombre}}" class="form-control" placeholder="Nombre del proveedor"
+                            maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="numero" name="numero" value="{{curso.numero}}" class="form-control" placeholder="Número de teléfono"
+                            minlength="10" maxlength="10" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

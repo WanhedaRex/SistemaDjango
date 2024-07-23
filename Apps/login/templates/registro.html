@@ -1,0 +1,44 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/styles.css' %}">
+    <script src="https://kit.fontawesome.com/65ea003a65.js" crossorigin="anonymous"></script>
+    <title>Register</title>
+</head>
+<body>
+    <div class="container-form sign-up">
+        <div class="welcome-back">
+            <div class="message">
+              <h2>Bienvenido al sistema bowis</h2>
+              <p>Tienes una cuenta? ¡Inicia sesion con este boton!</p>
+          <a href="login.html"><button class="sign-up-btn">Iniciar Sesion</button></a>    
+            </div>
+        </div>
+        <form action="{% url 'registrar_usuario' %}" method="post" class="formulario">
+          {% csrf_token %}
+          <h2 class="create-account">Crear una cuenta</h2>
+          <div class="iconos">
+            <div class="border-icon">
+              <i class="fa-brands fa-facebook" style="color: #bb7b0c;"></i>
+            </div>
+            <div class="border-icon">
+              <i class="fa-brands fa-google" style="color: #bb7b0c;"></i>
+            </div>
+            <div class="border-icon">
+              <i class="fa-brands fa-instagram" style="color: #bb7b0c;"></i>
+            </div>
+          </div>     
+          <p class="cuenta-gratis">Crear una cuenta gratis</p>
+          <input class="inp" type="text"  name="nombreUsuario" placeholder="Nombre de usuario" required>
+          <input class="inp"  type="email" name ="correoElectronico" placeholder="Correo electrónico" required>
+          <input class="inp" type="password" name="password" placeholder="Contraseña" required>
+          <input class="subb" type="submit" value="Save">
+        </form>
+      </div>
+   
+</body>
+</html>

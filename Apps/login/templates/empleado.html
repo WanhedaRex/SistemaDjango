@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Empleados {% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/estiloEmpleado.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    
+</head>
+<body>
+    <nav class="navbar" style="background-color: #ff6200;" >
+        <div class="container-fluid">
+         <a class="navbar-brand" href="#" style="color: #ffff; font-size: 50px;" > <center>Empleados de Bowis</center></a>
+        </div>
+        <a href="base.html" class="btn btn-light ml-auto float-right" >Regresar</a>
+      </nav>
+      <br>
+      <br>
+</div>
+
+<div class="row">
+</div>
+  <center><div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card" style="background-color: #ffcf9c; border-color: #ff6200;border-radius: 20px; border-width: 10px;">
+      <div class="card-body">
+        <h5 class="card-title" style="font-size: larger;" >Inventario</h5>
+        <p class="card-text">En este apartado se pude visualizar las salsas que aun quedan en el inventario.
+        </p>
+        <a href="#" class="btn" style="background-color: #ff6c10; color: aliceblue;">Entrar</a>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="col-sm-6">
+    <div class="card" style="background-color: #ffcf9c; border-color: #ff6200;border-radius: 20px; border-width: 10px;">
+      <div class="card-body">
+        <h5 class="card-title">Pedidos del dia</h5>
+        <p class="card-text">En este apartado se puede ver cuantos pedidos se realizaron en el dia.</p>
+        <a href="#" class="btn" style="background-color: #ff6c10; color: aliceblue;">Entrar</a>
+      </div>
+    </div>
+  </div>
+</div></cente>
+</body>
+</html>

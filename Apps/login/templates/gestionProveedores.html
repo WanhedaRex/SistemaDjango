@@ -1,0 +1,66 @@
+{% extends "./proveedores.html" %}
+{% block title %} Proveedores {% endblock %}
+{% block body %}
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        {% if messages %}
+        {% for message in messages %}
+    <div class="alert alert-dismissible alert-warning">
+     <button type="button" class="close" data-dismiss="alert">&times;</button>
+     <strong class="text-dark">{{ message }}</strong>
+    </div>    
+        {% endfor %}
+        {% endif %}
+        <h2>Gestión de proveedores</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registrarProveedores/" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtCodigo" name="txtCodigo" class="form-control" placeholder="Código de proveedor"
+                            minlength="6" maxlength="6" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre del proveedor"
+                            maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="numero" name="numero" class="form-control" placeholder="Número de teléfono"  
+                        minlength="10" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-warning btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <h1>Listado de proveedores</h1>
+        <div class="table-responsive py-2">
+            <table class="table table-striped table-bordered border-danger-subtle">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Código del proveedor</th>
+                        <th>Nombre del proveedor</th>
+                        <th>Número de teléfono</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in curso %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{c.codigo}}</td>
+                        <td>{{c.nombre}}</td>
+                        <td>{{c.numero}}</td>
+                        <td><a href="edicionProveedores/{{c.codigo}}" class="btn btn-info">Editar</a></td>
+                        <td><a href="eliminarProveedores/{{c.codigo}}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
